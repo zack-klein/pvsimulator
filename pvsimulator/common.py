@@ -14,7 +14,7 @@ QUEUE = "meter"
 def get_logger(name, level=logging.INFO):
     logging.basicConfig()
     logger = logging.getLogger(name)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(level)
     return logger
 
 
