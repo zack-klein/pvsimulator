@@ -25,10 +25,10 @@ def make_app(slots):
     """
     Creates a Streamlit application. Meant to be refreshed frequently!
     """
-    title = slots["title"]
-    title.markdown("# PV Simulator")
-
     column = slots["select"]
+
+    title = slots["title"]
+    title.markdown(f"# PV Simulator - {column}")
 
     chart = slots["chart"]
     df = get_data()
