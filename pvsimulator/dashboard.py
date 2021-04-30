@@ -70,4 +70,5 @@ def main():
         sleep(INTERVAL_SEC)
 
 
-main()
+if __name__ == "__main__":
+    main()
