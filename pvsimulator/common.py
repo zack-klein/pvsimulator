@@ -8,6 +8,7 @@ from pika.exceptions import AMQPConnectionError
 
 RESULTS_FILE = "/var/opt/pvsimulator/results.jsonl"
 INTERVAL_SEC = 0.15
+QUEUE = "meter"
 
 
 def get_logger(name, level=logging.INFO):

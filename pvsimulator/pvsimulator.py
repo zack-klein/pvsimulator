@@ -3,10 +3,9 @@ import json
 from datetime import datetime
 from random import uniform
 
-from common import get_rabbit_conn, RESULTS_FILE, get_logger
+from common import get_rabbit_conn, RESULTS_FILE, get_logger, QUEUE
 
 logger = get_logger("pvsimulator")
-QUEUE = "meter"
 
 
 def _simulate_pv():

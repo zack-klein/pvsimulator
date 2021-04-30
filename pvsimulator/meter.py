@@ -3,12 +3,9 @@ import json
 from random import uniform
 from time import sleep
 
-from common import get_rabbit_conn, INTERVAL_SEC, get_logger
+from common import get_rabbit_conn, INTERVAL_SEC, get_logger, QUEUE
 
 logger = get_logger("meter")
-
-
-QUEUE = "meter"
 
 
 def _publish_to_rabbit(val, queue=QUEUE):
