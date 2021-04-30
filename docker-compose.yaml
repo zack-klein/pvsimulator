@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  rabbit:
+    build:
+      context: .
+      dockerfile: rabbit.Dockerfile
+    container_name: rabbit
+  meter:
+    command: python -u pvsimulator/meter.py
+    build: .
+    container_name: meter
+    volumes:
+      - ./pvsimulator:/var/opt/pvsimulator
+    depends_on:
+      - rabbit
+  pvsimulator:
+    command: python -u pvsimulator/pvsimulator.py
+    build: .
+    container_name: pvsimulator
+    volumes:
+      - ./pvsimulator:/var/opt/pvsimulator
+    depends_on:
+      - rabbit
+      - meter
+  dashboard:
+    command: streamlit run pvsimulator/dashboard.py
+    build:
+      context: .
+      dockerfile: dashboard.Dockerfile
+    ports:
+      - 80:8501
+    container_name: dashboard
+    volumes:
+      - ./pvsimulator:/var/opt/pvsimulator
+    depends_on:
+      - rabbit
+      - meter
+      - pvsimulator
